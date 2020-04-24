@@ -8,7 +8,7 @@
 ## Obstacle Detection
 The main goal of the current project is to detect and cluster different potential obstacles in the scene. These objects can be other cars, cyclists, traffic signs, pedestrains ... etc. To achieve this goal the point cloud obtained from the LiDAR is processed to produce a number of 3D bounding boxes. Each bound box include a potential object.
 
-The following steps was implementd:
+The following steps were implemented:
 1. The point cloud is downsampled to have a less resolution cloud. This cloud is computationaly cheaper for processing in real time. At the same time, the cloud resolution should not be too low in order not to skip any potential object.
 2. The cloud has points from different objects that can be catogarized into 3 groups: potential obstacles, road, ego car roof  and side buildings. An ROI is determined to get the point located in the driving space only and neglected the points reflected from the buildings and the car roof. This can be done by using some information about car dimensions and road width. The later information can be obtained from a map or a camera.
 3. The resulted cloud from the previous step contains only potential obstacles and road points. They are seperated by fitting the cloud points to a plane taking into account that the road is usually a plane (not always true). Then, the outliers which werenot fitted to the plane is the cloud points related to the obstacles. RANSAC algorithm was used to fit the points to the plane. Two implementation were proposed: PCL implementation and own implementation from scratch.
