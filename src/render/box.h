@@ -18,5 +18,8 @@ struct Box
 	float x_max;
 	float y_max;
 	float z_max;
+
+	Box(float a, float b, float c, float d, float e, float f):x_min(a), y_min(b), z_min(c),x_max(d),y_max(e),z_max(f){}
+	Box(){}
 };
 #endif
